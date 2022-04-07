@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Umwamikazi</string>
+    <string name="dialog_title">Welcome Universe</string>
+    <string name="btnSend">send</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="dialog_price">The price</string>
+</resources>
