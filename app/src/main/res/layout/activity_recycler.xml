@@ -13,7 +13,7 @@
         android:text="This is the list of  Tv "
         android:layout_margin="20sp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerId"
+        android:id="@+id/myRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

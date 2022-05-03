@@ -2,91 +2,107 @@ package com.practice.lionepart7;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnNext;
-
+    TextView noAccountTV;
+    EditText emailEt,passwordEt;
+    Button loginBtn;
+    FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
+    Coms coms;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+        coms=new Coms(this);
+        mAuth = FirebaseAuth.getInstance();
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Loggin in....");
+        progressDialog.setCanceledOnTouchOutside(false);
 
-        btnNext = findViewById(R.id.btnNext);
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        emailEt=findViewById(R.id.emailEt);
+        passwordEt=findViewById(R.id.passwordEt);
+        loginBtn=findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(MainActivity.this,Recycler.class);
-                startActivity(mIntent);
+                loginUser();
             }
         });
+        noAccountTV=findViewById(R.id.noAccountTV);
+        noAccountTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Register.class));
+                finish();
+            }
+        });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.themenu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.add:
-                callDialog();
-                break;
-            case R.id.list:
-                startActivity(new Intent(this, Recycler.class));
-                break;
+    private void loginUser() {
+        String email=emailEt.getText().toString();
+        String pass=passwordEt.getText().toString();
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            emailEt.setError("Invalid Email");
+            emailEt.requestFocus();
+            return;
         }
-        return super.onOptionsItemSelected(item);
-    }
+        if (TextUtils.isEmpty(pass)){
+            passwordEt.setError("Password is required");
+            passwordEt.requestFocus();
+            return;
+        }
+        progressDialog.show();
+        mAuth.signInWithEmailAndPassword(email,pass)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        //what to do if login is successfull
+                        progressDialog.dismiss();
+                        startActivity(new Intent(getApplicationContext(),Login.class));
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //show dialogbox show error reason
+                        progressDialog.dismiss();
+                        coms.message("Error",e.getMessage());
+                    }
+                });
 
-    private void callDialog() {
-        MaterialAlertDialogBuilder thedialog = new MaterialAlertDialogBuilder(this);
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.activity_custom_dialog, null);
-        TextInputEditText dialogName = view.findViewById(R.id.dialogName);
-        TextInputEditText dialogDepartment = view.findViewById(R.id.dialogDepartment);
-        TextInputEditText dialogGrade = view.findViewById(R.id.dialogGrade);
-        TextInputEditText dialogAge = view.findViewById(R.id.dialogAge);
-        thedialog.setView(view);
-        thedialog.setTitle("Input your Information Here");
-        thedialog.setPositiveButton("Send", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(MainActivity.this, ""+dialogName.getText().toString()+"\n"+dialogAge.getText().toString()+"\n"+dialogDepartment.getText().toString()+"\n"+dialogGrade.getText().toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-        thedialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
 
-            }
-        });
-
-
-        thedialog.setCancelable(false);
-        thedialog.show();
-
-    }
-    public void registerAccount(){
-        startActivity(new Intent(getApplicationContext(), Register.class));
     }
 }

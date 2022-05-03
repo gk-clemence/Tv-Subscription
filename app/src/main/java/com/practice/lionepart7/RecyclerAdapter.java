@@ -1,3 +1,4 @@
+/*
 package com.practice.lionepart7;
 
 import android.content.Context;
@@ -66,3 +67,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VH> {
         }
     }
 }
+*/

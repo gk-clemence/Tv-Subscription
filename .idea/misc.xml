@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.1" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_buy_page.xml" value="0.18" />
         <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_custom_dialog.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_recycler.xml" value="0.2" />
         <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/backup.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/custom_row_item.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/layout/productrow.xml" value="0.11" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/menu/back_menu.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/menu/second_menu.xml" value="0.2" />
+        <entry key="..\:/Andr.Project/Part_7/app/src/main/res/menu/themenu.xml" value="0.2" />
         <entry key="..\:/Users/Administrator/Desktop/Part_7/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.113" />
         <entry key="..\:/Users/Administrator/Desktop/Part_7/app/src/main/res/layout/activity_custom_dialog.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Desktop/Part_7/app/src/main/res/layout/activity_main.xml" value="0.33" />

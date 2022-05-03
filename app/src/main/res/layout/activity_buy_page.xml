@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BuyPage">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="BUY"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/channelImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/cnn" />
+        <TableLayout
+            android:layout_below="@+id/channelImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:id="@+id/name"
+                    android:text="Channel Name:"/>
+                <TextView
+                    android:id="@+id/subscriptionText"
+                    android:layout_below="@+id/channelImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Canal box Subscription"
+                    android:layout_gravity="center"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Price"/>
+                <TextView
+                    android:id="@+id/channelPrice"
+                    android:layout_below="@+id/subscriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25000Frw"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Duration:"/>
+                <TextView
+                    android:id="@+id/subscriptionDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Month"/>
+            </TableRow>
+        </TableLayout>
+
+
+
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:text="Pay"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

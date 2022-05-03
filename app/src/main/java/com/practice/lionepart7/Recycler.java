@@ -1,3 +1,4 @@
+/*
 package com.practice.lionepart7;
 
 import androidx.annotation.NonNull;
@@ -58,4 +59,4 @@ public class Recycler extends AppCompatActivity {
         itemList.add(new Item(R.drawable.appletv, "Apple Tv", "Browse all movies, TV shows, and more from Apple TV+. Watch all Apple Originals here and on the Apple TV app across your devices.", 640000));
         return itemList;
     }
-}
+}*/
